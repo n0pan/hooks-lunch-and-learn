@@ -4,7 +4,7 @@ import axios from "axios";
 import UserCard from "../UserCard";
 
 class UserList extends React.Component {
-  state = { users: null, totalUsersFetched: null, requestedUsersCount: 1 };
+  state = { users: null, requestedUsersCount: 1 };
 
   constructor() {
     super();
@@ -15,7 +15,7 @@ class UserList extends React.Component {
 
   async componentDidMount() {
     const users = await this.fetchUsers(1);
-    this.setState({ users: [...users], totalUsersFetched: 1 });
+    this.setState({ users: [...users] });
   }
 
   async fetchUsers(userCount) {
@@ -34,9 +34,7 @@ class UserList extends React.Component {
   async onAddUsers(requestedUsersCount) {
     const newUsers = await this.fetchUsers(requestedUsersCount);
     this.setState({
-      users: [...this.state.users, ...newUsers],
-      totalUsersFetched:
-        this.state.totalUsersFetched + parseInt(requestedUsersCount)
+      users: [...this.state.users, ...newUsers]
     });
   }
 
