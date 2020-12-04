@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-import { useRandomUsers } from "../../hooks";
+import { useRandomUsers, useFormInput } from "../../hooks";
 
 import UserCard from "../UserCard";
 
 function NewUserList() {
   const [requestedUsersCount, setRequestedUsersCount] = useState(1);
   const { users, addUsers } = useRandomUsers(1);
+  const [name, setName] = useFormInput("Michel");
+  const [age, setAge] = useFormInput(12);
 
   const handleChangeRequestedUsers = e => {
     setRequestedUsersCount(e.target.value);
@@ -43,6 +45,9 @@ function NewUserList() {
           value={requestedUsersCount}
           onChange={e => handleChangeRequestedUsers(e)}
         />
+        <input type="text" value={name} onChange={e => setName(e)} />
+        <input type="text" value={age} onChange={e => setAge(e)} />
+        <p>{name}</p>
         <button onClick={() => addUsers(requestedUsersCount)}>
           Add {requestedUsersCount} new user(s)
         </button>
