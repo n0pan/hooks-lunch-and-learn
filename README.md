@@ -9,4 +9,5 @@ Slides: https://docs.google.com/presentation/d/13ilmD1BbCT8gLlOyjtrpTDV3BwCgk76E
 
 # Build
 `yarn install`
+
 `yarn start`
